@@ -93,7 +93,6 @@ const UseWallet = () => {
       return;
     }
     try{
-    //   const balance = await provider.getBalance(inputAddress,"latest");
      const balance = await provider.request({ method: "eth_getBalance", params:[inputAddress,"latest"] });
      const balInDec = ethers.formatEther(balance);
     setBalance(balInDec);
@@ -102,10 +101,10 @@ const UseWallet = () => {
     }
   }
 
-  const handleChainChanged = async (chainIdHex) => {
-    setChainId(chainIdHex);
-    setNetworkName(getNetworkName(chainIdHex));
-    setErrorMessage(`Network changed to ${getNetworkName(chainIdHex)}`);
+  const handleChainChanged = async (chainIdDec) => {
+    setChainId(chainIdDec);
+    setNetworkName(getNetworkName(chainIdDec));
+    setErrorMessage(`Network changed to ${getNetworkName(chainIdDec)}`);
   };
 
   const handleAccountsChanged = (accounts) => {

@@ -16,7 +16,7 @@ import useWallet from './useWallet';
   } = useWallet();
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
+   <div style={{ padding: '20px', fontFamily: 'Arial' }}>
       <h2>Wallet Connection</h2>
 
       {accounts ? (
@@ -43,7 +43,7 @@ import useWallet from './useWallet';
 
             {balInDec && (
               <p>
-                Balance: {balInDec} ETH
+                Balance: {balInDec} 
               </p>
             )}
           </div>
