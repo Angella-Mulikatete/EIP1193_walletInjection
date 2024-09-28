@@ -2,9 +2,9 @@ import  {useEffect, useState} from 'react'
 import { ethers } from 'ethers';
 
 const UseWallet = () => {
-   const [accounts, setAccount] = useState(null);
+  const [accounts, setAccount] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
-  const [chainId, setChainId] = useState('');
+  const [chainIdDec, setChainId] = useState('');
   const [networkName, setNetworkName] = useState('');
   const [balInDec, setBalance] = useState(null);
   const [inputAddress, setInputAddress] = useState('');
@@ -60,10 +60,10 @@ const UseWallet = () => {
       console.log(`Decimal Chain ID: ${chainIdDec}`);
 
       if (chainIdHex === '0x1') {
-        setChainId(chainIdHex);
+        setChainId(chainIdDec);
         setNetworkName('Ethereum Mainnet');
       } else if (chainIdHex === '0xaa36a7') {
-        setChainId(chainIdHex);
+        setChainId(chainIdDec);
         setNetworkName('Sepolia Testnet');
       } else {
         setErrorMessage('Please connect to Sepolia Testnet or Ethereum Mainnet.');
@@ -126,7 +126,7 @@ const UseWallet = () => {
   };
 
   return  {accounts,
-    chainId,
+    chainIdDec,
     networkName,
     errorMessage,
     balInDec,
@@ -140,38 +140,3 @@ const UseWallet = () => {
 export default UseWallet
 
 
-
-//   const fetchBalance = async () => {
-// //   if (!inputAddress || !ethers.utils.isAddress(inputAddress)) {
-// //     setErrorMessage('Please enter a valid Ethereum address.');
-// //     return;
-// //   }
-
-//   try {
-//     const provider = window.ethereum;
-//     if (!provider) {
-//       setErrorMessage('Ethereum provider not found.');
-//       return;
-//     }
-
-//     // Use eth_getBalance RPC method to get the balance
-//     const balanceHex = await provider.request({
-//       method: 'eth_getBalance',
-//       params: [inputAddress, 'latest'],
-//     });
-
-//     // Convert the hex balance to decimal
-//     const balanceInWei = parseInt(balanceHex, 16);
-
-//     // Convert to Ether units (1 Ether = 10^18 Wei) and format
-//     const formattedBalance = ethers.utils.formatUnits(balanceInWei, 18); // 18 decimals for ETH
-
-//     // Format the balance to 4 decimal places and append "SepoliaETH"
-//     const balanceWithUnit = `${parseFloat(formattedBalance).toFixed(4)} SepoliaETH`;
-
-//     // Set the formatted balance in the component state
-//     setBalance(balanceWithUnit);
-//   } catch (err) {
-//     setErrorMessage(`Error fetching balance: ${err.message}`);
-//   }
-// };
