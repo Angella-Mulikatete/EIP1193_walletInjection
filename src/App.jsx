@@ -1,6 +1,7 @@
 
 import './App.css'
-import ConnectWallet from './connectWallet'
+import ConnectWallet from './components/connectWallet'
+
 
 function App() {
  
